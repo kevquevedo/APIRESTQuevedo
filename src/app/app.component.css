@@ -1,0 +1,9 @@
+.nameApp{
+  font-size: 30px;
+  font-style: italic;
+  color: black;
+}
+
+.fondo{
+  background: linear-gradient(200deg, #b527cf, #3bd9d9);
+}

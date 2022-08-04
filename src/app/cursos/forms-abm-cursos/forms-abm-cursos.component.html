@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="col-3">
+
+    <mat-card>
+      <div class="d-flex align-items-start justify-center">
+        <div class="nav flex-column nav-pills me-3" aria-orientation="vertical">
+          <button mat-button color="primary" class="nav-link " data-bs-toggle="modal" data-bs-target="#altaCurso">Nuevo Curso</button>
+          <button mat-button color="primary" class="nav-link " data-bs-toggle="modal" data-bs-target="#modificarCurso">Modificar Curso</button>
+          <button mat-button color="primary" class="nav-link " data-bs-toggle="modal" data-bs-target="#eliminarCurso">Eliminar Curso</button>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- NUEVO CURSO -->
+    <div class="modal fade" id="altaCurso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Nuevo Curso</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="flex-column">
+              <form [formGroup]="formulario" class="form-floating mb-3 ">
+
+                <input type="text" class="form-control" formControlName="nombre" id="floatingName" placeholder="name" required>
+                <label for="floatingName">Nombre</label>
+
+                <div *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.errors?.['required']"
+                  class="alert alert-danger" role="alert">Nombre Invalido!
+                </div>
+
+              </form>
+
+              <form [formGroup]="formulario" class="form-floating mb-3">
+
+                <input type="text" class="form-control" formControlName="id" id="floatingDoc" placeholder="doc" required>
+                <label for="floatingDoc">ID</label>
+
+                <div *ngIf="formulario.get('id')?.touched && formulario.get('id')?.errors?.['required']"
+                  class="alert alert-danger" role="alert">ID Invalido!
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="crearCurso(formulario)" [disabled]="formulario.invalid" data-bs-dismiss="modal">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- MODIFICAR Curso -->
+     <div class="modal fade" id="modificarCurso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modificar Curso</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="flex-column">
+
+              <form [formGroup]="formularioMod" class="form-floating mb-3">
+                <input type="text" class="form-control" formControlName="id" id="floatingDoc" placeholder="doc" required>
+                <label for="floatingDoc">id</label>
+
+                <div *ngIf="formularioMod.get('id')?.touched && formularioMod.get('id')?.errors?.['required']"
+                  class="alert alert-danger" role="alert">id Invalido!
+                </div>
+              </form>
+
+              <form [formGroup]="formularioMod" class="form-floating mb-3 ">
+
+                <input type="text" class="form-control" formControlName="nombre" id="floatingName" placeholder="name" required>
+                <label for="floatingName">Nombre</label>
+
+                <div *ngIf="formularioMod.get('nombre')?.touched && formularioMod.get('nombre')?.errors?.['required']"
+                  class="alert alert-danger" role="alert">Nombre Invalido!
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="modificarCurso(formularioMod)" [disabled]="formularioMod.invalid" data-bs-dismiss="modal">Confirmar</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIMINAR CURSO -->
+    <div class="modal fade" id="eliminarCurso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Eliminar Curso</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="flex-column">
+
+              <form [formGroup]="formularioBaja" class="form-floating mb-3">
+                <input type="text" class="form-control" formControlName="id" id="floatingDoc" placeholder="doc" required>
+                <label for="floatingDoc">ID</label>
+
+                <div *ngIf="formularioBaja.get('id')?.touched && formularioBaja.get('id')?.errors?.['required']"
+                  class="alert alert-danger" role="alert">Id Invalido!
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="eliminarCurso(formularioBaja)" [disabled]="formularioBaja.invalid" data-bs-dismiss="modal">Confirmar</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-9">
+    <app-lista-de-cursos></app-lista-de-cursos>
+  </div>
+</div>

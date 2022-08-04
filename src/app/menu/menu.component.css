@@ -1,0 +1,13 @@
+.example-button-row {
+  display: table-cell;
+}
+
+.example-button-row .mat-button-base {
+  margin: 10px 10px 1px 0;
+}
+
+.banner{
+  background-color: grey;
+  width: 125%;
+  height: 100%;
+}

@@ -1,0 +1,17 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Kevin Quevedo App - Log </h2>
+
+    <!-- Login Form -->
+    <form [formGroup]="formulario">
+      <input type="text" formControlName="usuario" class="fadeIn second"  placeholder="Usuario">
+    </form>
+
+    <form [formGroup]="formulario">
+      <input type="password" formControlName="contraseña" class="fadeIn third"  placeholder="Contraseña">
+      <input type="button" class="fadeIn fourth" value="Entrar" (click)="validarUsuario(formulario)" >
+    </form>
+
+  </div>
+</div>
